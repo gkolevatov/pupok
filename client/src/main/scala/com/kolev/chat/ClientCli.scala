@@ -1,6 +1,6 @@
 package com.kolev.chat
 
-import com.kolev.cli.Cli
+import _root_.com.kolev.cli.Cli
 
 class ClientCli(client: Chat.Client, val mainCli: Cli, val clientName: String) extends Cli {
 

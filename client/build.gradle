@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'scala'
+    id "com.github.maiflai.scalatest"
+}
+
+group 'com.kolev.pupok'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'scala'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':transport')
+    implementation libraries.scala_sdk
+
+    testImplementation testLibraries.junit
+    testImplementation testLibraries.flexmark
+    testImplementation testLibraries.scalatest
+}
+
+test {
+    useJUnitPlatform()
+}
