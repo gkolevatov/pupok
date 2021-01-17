@@ -1,6 +1,5 @@
 package com.kolev.chat
 
-import org.apache.thrift.server.TServer
 import org.apache.thrift.server.TThreadPoolServer
 import org.apache.thrift.transport.TServerSocket
 import org.apache.thrift.transport.TTransportException

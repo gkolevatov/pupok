@@ -8,36 +8,23 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'scala'
-apply plugin: 'distribution'
 apply plugin: 'com.github.maiflai.scalatest'
+apply plugin: com.kolev.DockerPlugin
+
+docker {
+    source = "src"
+    dest = "dest"
+}
 
 repositories {
     mavenCentral()
 }
 
-
 dependencies {
-    implementation project(':transport')
-    implementation libraries.scala_sdk
+    compile project(':transport')
+    compile libraries.scala_sdk
 
     testImplementation testLibraries.junit
     testImplementation testLibraries.flexmark
     testImplementation testLibraries.scalatest
-}
-
-
-task copyToLib(type: Copy) {
-    into "${buildDir}/libs"
-    from configurations.runtime
-}
-
-build.dependsOn(copyToLib)
-
-task deploy (dependsOn: build, type: Copy) {
-
-    into "${buildDir}/distr"
-    from "${buildDir}/libs"
-    from "${rootDir}/src/main/shell"
-
-
 }
